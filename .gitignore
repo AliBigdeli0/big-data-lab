@@ -1,0 +1,100 @@
+
+# ==========================================
+# Hadoop runtime data
+# ==========================================
+/hadoop_three_clusters/app/
+/hadoop_three_clusters/data1/
+/hadoop_three_clusters/data2/
+/hadoop_three_clusters/data3/
+
+# ==========================================
+# Generated data and runtime files
+# ==========================================
+**/metastore_db/
+**/derby.log
+**/hadoop_tmp/
+**/logs/
+**/tmp/
+**/output/
+**/*.log
+**/*.pid
+**/*.lock
+
+# ==========================================
+# Environment variables and credentials
+# ==========================================
+.env
+.env.*
+!.env.example
+
+*.pem
+*.key
+*.jks
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+**/.ssh/
+
+# ==========================================
+# Downloaded binaries and archives
+# ==========================================
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.deb
+*.rpm
+*.jar
+*.class
+
+# ==========================================
+# Build artifacts
+# ==========================================
+**/build/
+**/target/
+**/dist/
+
+# ==========================================
+# Python and data processing
+# ==========================================
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ==========================================
+# IDE and editor files
+# ==========================================
+.idea/
+.vscode/
+.settings/
+*.iml
+*.swp
+*.swo
+*~
+
+# ==========================================
+# Operating system files
+# ==========================================
+.DS_Store
+.AppleDouble
+Thumbs.db
+Desktop.ini
+
+# ==========================================
+# Temporary and backup files
+# ==========================================
+*.bak
+*.tmp
+*.orig
+
+# ==========================================
+# Testing and coverage
+# ==========================================
+coverage/
+.coverage
+htmlcov/
+test-results/
