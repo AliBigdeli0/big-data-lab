@@ -1,13 +1,23 @@
-FROM ubuntu
+FROM  ubuntu:22.04
 
-RUN apt update -y 
-RUN apt install wget tar vim openssh-server net-tools iputils-ping  -y 
-RUN apt-get install openjdk-8-jre-headless openjdk-8-jdk  -y
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        wget \
+        ca-certificates \
+        tar \
+        vim \
+        net-tools \
+        iputils-ping \
+        openjdk-8-jdk \
+        make && \
+    rm -rf /var/lib/apt/lists/*
 
 ##################
 RUN java -version
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre/
-ENV PATH=$PATH:$JAVA_HOME/bin 
+RUN ln -s "$(dirname "$(dirname "$(readlink -f "$(command -v javac)")")")" /opt/java
+
+ENV JAVA_HOME=/opt/java
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
 RUN touch ~/.bashrc
 
 #Install hadoop
@@ -23,7 +33,7 @@ ENV HADOOP_MAPRED_HOME=$HADOOP_HOME
 ENV HADOOP_COMMON_HOME=$HADOOP_HOME
 ENV HADOOP_HDFS_HOME=$HADOOP_HOME
 ENV HADOOP_YARN_HOME=$HADOOP_HOME
-ENV HADOOP_CLASSPATH=${JAVA_HOME}lib/tools.jar
+ENV HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
 ENV HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 ENV PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin:$JAVA_HOME/bin
 ENV HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
