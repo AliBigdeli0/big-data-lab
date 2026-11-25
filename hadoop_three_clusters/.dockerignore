@@ -1,0 +1,25 @@
+
+# Exclude everything by default
+**
+
+# Dockerfiles
+!Dockerfile
+!Dockerfile_datanode
+
+# Startup scripts
+!startup_entire.sh
+!startup_data.sh
+
+# Hadoop configuration
+!namenode_files/
+!namenode_files/**
+!datanode_files/
+!datanode_files/**
+
+# HBase configuration
+!hbase_files/
+!hbase_files/**
+
+# ZooKeeper configuration
+!zookeeper/
+!zookeeper/zoo.cfg
